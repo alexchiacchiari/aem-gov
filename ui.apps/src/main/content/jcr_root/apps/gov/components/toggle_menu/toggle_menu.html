@@ -1,0 +1,34 @@
+<div>
+    <button
+    id="menuButton">
+&#9776;
+</button>
+<div id="menu"
+class="cmp-togglemenu_menudiv"
+data-sly-use.togglemenumodel="com.adobe.aem.gov.core.models.Menu"
+
+data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+data-sly-test.hasContent="${!togglemenumodel.isEmpty}">
+
+<ul class="cmp-togglemenu__ul"
+data-sly-list.page="${togglemenumodel.getPages}">
+<li>
+<a href="${page.path @ extension='html'}">
+    ${page.getTitle}
+</a>
+</li>
+<ul
+class="cmp-togglemenu__subul"
+data-sly-test="${page.path != '/content/gov/it'}"
+data-sly-list.child="${page.listChildren}">
+<li>
+<a href="${child.getPath @ extension='html'}">
+    ${child.title}
+</a>
+</li>
+</ul>
+</ul>
+</div>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty = !hasContent}"></sly>
+</div>
+

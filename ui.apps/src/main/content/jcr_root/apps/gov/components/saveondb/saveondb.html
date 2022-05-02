@@ -1,0 +1,6 @@
+<div>
+    <form action="/bin/messages?path=${currentNode.path}" method="POST">
+        <input type="submit" value="Send data On MySQL">
+    </form>
+    <p>Last dialog re-fill: ${'dd-MM-yyyy HH:mm:ss' @ format=properties.jcr:lastModified,  timezone='UTC'}</p>
+</div>

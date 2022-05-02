@@ -1,0 +1,28 @@
+.cmp-search {}
+.cmp-search__form {}
+
+.cmp-search__icon {
+    top: 0;
+    width: 55px;
+    height: 55px;
+    left: 380px;
+    padding: 0;
+    margin: 0;
+    background-color: #1292dc;
+}
+.cmp-search__input {
+    width: 400px;
+    height: 55px;
+    line-height: 55px;
+    border: none;
+    padding: 0 12px 0 12px;
+    margin: 0;
+}
+.cmp-search__loading-indicator {}
+.cmp-search__clear {}
+.cmp-search__clear-icon {}
+.cmp-search__results {}
+.cmp-search__item {}
+.cmp-search__item--is-focused {}
+.cmp-search__item-mark {}
+.cmp-search__item-title {}

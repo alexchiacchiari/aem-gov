@@ -1,0 +1,25 @@
+<nav class="cmp-menu"
+     data-sly-use.menuModel="com.adobe.aem.gov.core.models.Menu"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.hasContent="${!menuModel.empty}"
+     >
+    <header>MENU <span>x</span></header>
+    <ol data-sly-list.page="${menuModel.getPages}">
+        <li class="cmp-menu__item">
+            <a href="${page.path @ extension='html'}">${page.getTitle}</a>
+            <ol class="cmp-menu__submenu"
+                data-sly-test="${page.path != '/content/gov/it'}"
+                data-sly-list.child="${page.listChildren}">
+                <li class="cmp-menu__item">
+                    <a href="${child.getPath @ extension='html'}">
+                        ${child.title}
+                    </a>
+                </li>
+            </ol>
+        </li>
+    </ol>
+    <footer><button aria-label="Toggle Menu">Toggle</button></footer>
+</nav>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty = !hasContent}"></sly>
+
+

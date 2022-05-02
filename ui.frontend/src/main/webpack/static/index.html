@@ -1,0 +1,699 @@
+
+
+<!DOCTYPE HTML>
+<html lang="it">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Il Governo</title>
+
+
+    <meta name="template" content="page-content"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="/etc.clientlibs/gov/clientlibs/clientlib-base.css" type="text/css">
+
+
+
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900" media="all"/>
+    <script type="text/javascript">
+        (function() {
+            window.ContextHub = window.ContextHub || {};
+
+            /* setting paths */
+            ContextHub.Paths = ContextHub.Paths || {};
+            ContextHub.Paths.CONTEXTHUB_PATH = "/libs/settings/cloudsettings/legacy/contexthub";
+            ContextHub.Paths.RESOURCE_PATH = "\/content\/gov\/it\/il\u002Dgoverno\/_jcr_content\/contexthub";
+            ContextHub.Paths.SEGMENTATION_PATH = "";
+            ContextHub.Paths.CQ_CONTEXT_PATH = "";
+
+            /* setting initial constants */
+            ContextHub.Constants = ContextHub.Constants || {};
+            ContextHub.Constants.ANONYMOUS_HOME = "/home/users/E/EISFLAml0GqJZvVOvA28";
+            ContextHub.Constants.MODE = "ui";
+        }());
+    </script><script src="/etc/cloudsettings.kernel.js/libs/settings/cloudsettings/legacy/contexthub" type="text/javascript"></script><script type="text/javascript">
+    (function($) {
+        'use strict';
+
+        /* options */
+        /**
+         * @type InjectContextHubOptions
+         */
+        var options = {};
+
+        /* where to include ContextHub's UI */
+        var injectWindow = window.top;
+
+        try {
+            /* if window.top contains 'ContextHubEmbedding' flag, use current window instead of window.top */
+            if (window.top.hasOwnProperty('ContextHubEmbedding') === true) {
+                injectWindow = window;
+            }
+        } catch(error) {
+            // if window.top is not reachable for security reasons (like page embedded into an iframe on a different domain), use current window.
+            injectWindow = window;
+        }
+
+        /* is ContextHub UI loaded from another iframe? then hide it by default (event listeners will display it when requested) */
+        var isEmbedded = injectWindow !== window;
+        var visibility = isEmbedded ? 'none' : 'block';
+
+        /* display ContextHub immediately if it's embedded on same page as ContentFinder */
+        if (isEmbedded && $('#cq-cf-wrapper', injectWindow.document).length) {
+            /* inject container to a page which includes ContextHub and not to top window */
+            injectWindow = window;
+            visibility = 'block';
+            options['zIndex'] = 10000;
+        }
+
+        /*
+         * coralui3 related includes:
+         * http://localhost:4502/libs/granite/ui/content/dumplibs.test.html?categories=coralui3
+         */
+        var scripts = [
+            "/etc/cloudsettings.ui.js/libs/settings/cloudsettings/legacy/contexthub",
+            "/etc.clientlibs/clientlibs/granite/typekit.js",
+            "/etc.clientlibs/clientlibs/granite/utils.js",
+            "/etc.clientlibs/clientlibs/granite/jquery/granite.js",
+            "/etc.clientlibs/clientlibs/granite/moment.js",
+            "/etc.clientlibs/clientlibs/granite/coralui3.js"
+        ];
+
+        var styles = [
+            "/etc.clientlibs/clientlibs/granite/coralui3.css",
+            "/etc/cloudsettings.styles.css/libs/settings/cloudsettings/legacy/contexthub"
+        ];
+
+        $.extend(options, {
+            address: "/etc/cloudsettings.ui.html//libs/settings/cloudsettings/legacy/contexthub",
+            display: visibility
+        });
+
+        window.injectContextHubUI(injectWindow.document, ContextHub, scripts, styles, options, function(UI, options) {
+            /* call it on parent ready, otherwise rarely window.document.body won't be ready due to race condition! */
+            $(window.document).ready(function() {
+                var pageContainer = UI.Properties.get('PAGE_CONTAINER') || $(window.document.body);
+                var zIndex = options.zIndex || UI.Properties.get('CONTAINER_UI_Z_INDEX') || 890;
+
+                UI.Properties.set('CONTAINER_UI_Z_INDEX', zIndex);
+                UI.Properties.set('PAGE_CONTAINER', pageContainer);
+
+                /* if document was not yet ready, set the page container once again later */
+                if (pageContainer.length === 0) {
+                    $(function() {
+                        UI.Properties.set('PAGE_CONTAINER', $(window.document.body));
+                    });
+                }
+
+                if (isEmbedded) {
+                    /* hide ContextHub container on iframe unload - to get rid of white gap that is visible during page reload */
+                    window.onbeforeunload = function() {
+                        /* catch the errors in case objects will get destroyed before code will be executed */
+                        try {
+                            $(ContextHub.UIFrame).hide();
+                            var pageContainer = UI.Properties.get('PAGE_CONTAINER') || $('');
+                            pageContainer.css('transition', '');
+                            pageContainer.css('top', UI.Properties.get('IFRAME_TOP_MARGIN'));
+                        } catch (error) {
+                            console.error("Error while unloading the page: ", error);
+                        }
+                    };
+                }
+            });
+        });
+
+    }(ContextHubJQ));
+</script>
+    <!--cq{"decorated":false,"type":"granite/contexthub/components/contexthub","path":"/content/gov/it/il-governo/jcr:content/contexthub","structurePath":"/content/gov/it/il-governo/jcr:content/contexthub","selectors":null,"servlet":"Script /libs/granite/contexthub/components/contexthub/contexthub.jsp","totalTime":5,"selfTime":5}-->
+
+
+
+
+
+    <link rel="stylesheet" href="/libs/cq/gui/components/authoring/editors/clientlibs/internal/page.css" type="text/css">
+    <link rel="stylesheet" href="/etc.clientlibs/wcm/foundation/clientlibs/main.css" type="text/css">
+    <script type="text/javascript" src="/libs/cq/gui/components/authoring/editors/clientlibs/internal/messaging.js"></script>
+    <script type="text/javascript" src="/libs/cq/gui/components/authoring/editors/clientlibs/utils.js"></script>
+    <script type="text/javascript" src="/libs/granite/author/deviceemulator/clientlibs.js"></script>
+    <script type="text/javascript" src="/libs/cq/gui/components/authoring/editors/clientlibs/internal/page.js"></script>
+    <script type="text/javascript" src="/etc.clientlibs/wcm/foundation/clientlibs/main.js"></script>
+    <script type="text/javascript" src="/etc.clientlibs/clientlibs/granite/jquery.js"></script>
+    <script type="text/javascript" src="/etc.clientlibs/clientlibs/granite/utils.js"></script>
+    <script type="text/javascript" src="/etc.clientlibs/clientlibs/granite/jquery/granite.js"></script>
+    <script type="text/javascript" src="/etc.clientlibs/foundation/clientlibs/jquery.js"></script>
+    <script type="text/javascript" src="/etc.clientlibs/foundation/clientlibs/shared.js"></script>
+
+
+
+
+
+
+    <!--cq{"decorated":false,"type":"cq/cloudconfig/components/scripttags/header","path":"/content/gov/it/il-governo/jcr:content/cloudconfig-header","structurePath":"/content/gov/it/il-governo/jcr:content/cloudconfig-header","selectors":null,"servlet":"Script /libs/cq/cloudconfig/components/scripttags/header/header.html","totalTime":2,"selfTime":2}-->
+
+
+
+    <script type="text/javascript" src="/etc.clientlibs/gov/clientlibs/clientlib-dependencies.js"></script>
+
+
+
+
+
+    <link rel="stylesheet" href="/etc.clientlibs/gov/clientlibs/clientlib-dependencies.css" type="text/css">
+    <link rel="stylesheet" href="/etc.clientlibs/gov/clientlibs/clientlib-site.css" type="text/css">
+
+
+
+
+
+
+
+</head>
+<body class="page basicpage" id="page-030a87bccc" data-cmp-data-layer-enabled>
+<script>
+    window.adobeDataLayer = window.adobeDataLayer || [];
+    adobeDataLayer.push({
+        page: JSON.parse("{\x22page\u002D030a87bccc\x22:{\x22@type\x22:\x22gov\/components\/page\x22,\x22repo:modifyDate\x22:\x222022\u002D04\u002D20T15:19:55Z\x22,\x22dc:title\x22:\x22Il Governo\x22,\x22xdm:template\x22:\x22\/conf\/gov\/settings\/wcm\/templates\/page\u002Dcontent\x22,\x22xdm:language\x22:\x22it\x22,\x22xdm:tags\x22:[],\x22repo:path\x22:\x22\/content\/gov\/it\/il\u002Dgoverno.html\x22}}"),
+        event:'cmp:show',
+        eventInfo: {
+            path: 'page.page\u002D030a87bccc'
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="root container responsivegrid">
+
+
+    <div id="container-2af21001a0" class="cmp-container">
+
+
+
+        <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+
+            <header class="experiencefragment aem-GridColumn aem-GridColumn--default--12">
+                <div id="experiencefragment-f2b33dfe92" class="cmp-experiencefragment cmp-experiencefragment--header">
+
+
+
+                    <div id="container-37523e9f92" class="cmp-container">
+
+
+
+                        <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+
+                            <div class="image aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--1 aem-GridColumn--default--1">
+                                <div data-cmp-is="image" data-cmp-lazythreshold="0" data-cmp-src="/content/experience-fragments/gov/us/en/site/header/master/_jcr_content/root/image.coreimg{.width}.svg/1650468043487/logo-gov.svg" data-asset="/content/dam/gov/logo_gov.svg" data-asset-id="a4e46a7a-444c-4169-921f-7dff683ad03b" data-title="Logo" id="image-52cc578f1c" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+                                    <a class="cmp-image__link" href="https://www.governo.it/" data-cmp-hook-image="link">
+
+
+                                        <img src="/content/experience-fragments/gov/us/en/site/header/master/_jcr_content/root/image.coreimg.svg/1650468043487/logo-gov.svg" class="cmp-image__image" itemprop="contentUrl" data-cmp-hook-image="image" alt="Logo"/>
+
+
+                                    </a>
+
+
+                                </div>
+
+
+                            </div>
+                            <div class="title aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--5 aem-GridColumn--offset--default--0">
+                                <div id="title-324677831a" class="cmp-title">
+                                    <h1 class="cmp-title__text">Governo Italiano                                  Presidenza del Consiglio dei Ministri</h1>
+                                </div>
+
+
+
+                            </div>
+                            <div class="search aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--4 aem-GridColumn--offset--default--1">
+                                <section id="search-2023ad9081" class="cmp-search" role="search" data-cmp-is="search" data-cmp-min-length="3" data-cmp-results-size="10">
+                                    <form class="cmp-search__form" data-cmp-hook-search="form" method="get" action="/content/gov/it/il-governo.searchresults.json/_jcr_content/root/search" autocomplete="off">
+                                        <div class="cmp-search__field">
+                                            <i class="cmp-search__icon" data-cmp-hook-search="icon"></i>
+                                            <span class="cmp-search__loading-indicator" data-cmp-hook-search="loadingIndicator"></span>
+                                            <input class="cmp-search__input" data-cmp-hook-search="input" type="text" name="fulltext" placeholder="Ricerca" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-invalid="false"/>
+                                            <button class="cmp-search__clear" data-cmp-hook-search="clear">
+                                                <i class="cmp-search__clear-icon"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <div class="cmp-search__results" data-cmp-hook-search="results" role="listbox" aria-multiselectable="false"></div>
+
+                                    <script data-cmp-hook-search="itemTemplate" type="x-template">
+                                        <a class="cmp-search__item" data-cmp-hook-search="item">
+                                            <span class="cmp-search__item-title" data-cmp-hook-search="itemTitle"></span>
+                                        </a>
+                                    </script>
+                                </section></div>
+                            <div class="flag aem-GridColumn aem-GridColumn--default--12"><div class="flag_container div">
+                                <div id="clickable" class="flag_green"></div>
+                                <div class="flag_white"></div>
+                                <div class="flag_red"></div>
+                            </div>
+                            </div>
+                            <div class="list aem-GridColumn aem-GridColumn--default--12">
+                                <ul id="list-a021addcb2" class="cmp-list">
+                                    <li class="cmp-list__item" data-cmp-data-layer="{&#34;list-a021addcb2-item-ca7fc8e613&#34;:{&#34;@type&#34;:&#34;gov/components/list/item&#34;,&#34;repo:modifyDate&#34;:&#34;2022-04-20T15:19:55Z&#34;,&#34;dc:title&#34;:&#34;Il Presidente&#34;,&#34;xdm:linkURL&#34;:&#34;/content/gov/it/il-presidente.html&#34;}}">
+                                        <article>
+                                            <a class="cmp-list__item-link" href="/content/gov/it/il-presidente.html" data-cmp-clickable>
+                                                <span class="cmp-list__item-title">Il Presidente</span>
+
+                                            </a>
+
+                                        </article>
+                                    </li>
+
+                                    <li class="cmp-list__item" data-cmp-data-layer="{&#34;list-a021addcb2-item-030a87bccc&#34;:{&#34;@type&#34;:&#34;gov/components/list/item&#34;,&#34;repo:modifyDate&#34;:&#34;2022-04-20T15:19:55Z&#34;,&#34;dc:title&#34;:&#34;Il Governo&#34;,&#34;xdm:linkURL&#34;:&#34;/content/gov/it/il-governo.html&#34;}}">
+                                        <article>
+                                            <a class="cmp-list__item-link" href="/content/gov/it/il-governo.html" data-cmp-clickable>
+                                                <span class="cmp-list__item-title">Il Governo</span>
+
+                                            </a>
+
+                                        </article>
+                                    </li>
+
+                                    <li class="cmp-list__item" data-cmp-data-layer="{&#34;list-a021addcb2-item-195e3a436e&#34;:{&#34;@type&#34;:&#34;gov/components/list/item&#34;,&#34;repo:modifyDate&#34;:&#34;2022-04-20T15:19:55Z&#34;,&#34;dc:title&#34;:&#34;Presidenza Del Consiglio&#34;,&#34;xdm:linkURL&#34;:&#34;/content/gov/it/la-presidenza-del-consiglio-dei-ministri.html&#34;}}">
+                                        <article>
+                                            <a class="cmp-list__item-link" href="/content/gov/it/la-presidenza-del-consiglio-dei-ministri.html" data-cmp-clickable>
+                                                <span class="cmp-list__item-title">Presidenza Del Consiglio</span>
+
+                                            </a>
+
+                                        </article>
+                                    </li>
+                                </ul>
+
+
+
+                            </div>
+                            <div class="toggle_menu aem-GridColumn aem-GridColumn--default--12"><div>
+                                <button id="menuButton">
+                                    &#9776;
+                                </button>
+                                <ul>
+                                    <li>ciao</li>
+                                    <li>come</li>
+                                    <li>stai</li>
+                                </ul>
+
+
+
+                            </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!--cq{"decorated":true,"type":"gov/components/experiencefragment","path":"/content/gov/it/il-governo/jcr:content/root/experiencefragment-header","structurePath":"/conf/gov/settings/wcm/templates/page-content/structure/jcr:content/root/experiencefragment-header","selectors":null,"servlet":"Script /apps/core/wcm/components/experiencefragment/v1/experiencefragment/experiencefragment.html","totalTime":32,"selfTime":32}-->
+            </header>
+            <main class="container responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+                <div id="container-3de76afec9" class="cmp-container">
+
+
+
+                    <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+
+                        <div class="title aem-GridColumn aem-GridColumn--default--12">
+                            <div data-cmp-data-layer="{&#34;title-8709cac3ea&#34;:{&#34;@type&#34;:&#34;gov/components/title&#34;,&#34;dc:title&#34;:&#34;Il Governo&#34;}}" id="title-8709cac3ea" class="cmp-title">
+                                <h1 class="cmp-title__text">Il Governo</h1>
+                            </div>
+
+
+
+                            <!--cq{"decorated":true,"type":"gov/components/title","path":"/content/gov/it/il-governo/jcr:content/root/container/title","selectors":null,"servlet":"Script /apps/core/wcm/components/title/v2/title/title.html","totalTime":3,"selfTime":3}-->
+                            <cq data-path="/content/gov/it/il-governo/jcr:content/root/container/title" data-config="{&quot;path&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/title&quot;,&quot;slingPath&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/title.html&quot;,&quot;dialog&quot;:&quot;/apps/core/wcm/components/title/v2/title/cq:dialog&quot;,&quot;dialogLoadingMode&quot;:&quot;auto&quot;,&quot;dialogLayout&quot;:&quot;auto&quot;,&quot;dialogSrc&quot;:&quot;/mnt/override/apps/core/wcm/components/title/v2/title/_cq_dialog.html/content/gov/it/il-governo/jcr:content/root/container/title&quot;,&quot;designDialog&quot;:&quot;/apps/core/wcm/components/title/v2/title/cq:design_dialog&quot;,&quot;designDialogLayout&quot;:&quot;fullscreen&quot;,&quot;designDialogLoadingMode&quot;:&quot;auto&quot;,&quot;designDialogSrc&quot;:&quot;/mnt/override/apps/core/wcm/components/title/v2/title/_cq_design_dialog.policydesign.editabletemplate.html/conf/gov/settings/wcm/policies/gov/components/title/policy_641475696923109?dialog=%2Fapps%2Fcore%2Fwcm%2Fcomponents%2Ftitle%2Fv2%2Ftitle%2Fcq%3Adesign_dialog&amp;referrer=%2Fcontent%2Fgov%2Fit%2Fil-governo&amp;policyContentPath=%2Fcontent%2Fgov%2Fit%2Fil-governo%2Fjcr%3Acontent%2Froot%2Fcontainer%2Ftitle&amp;policyContentResourceType=gov%2Fcomponents%2Ftitle&amp;policyDirectoryPath=%2Fconf%2Fgov%2Fsettings%2Fwcm%2Fpolicies%2Fgov%2Fcomponents%2Ftitle%2F&amp;policyMappingPath=%2Fconf%2Fgov%2Fsettings%2Fwcm%2Ftemplates%2Fpage-content%2Fpolicies%2Fjcr%3Acontent%2Froot%2Fcontainer%2Ftitle&amp;policyMappingResourceType=wcm%2Fcore%2Fcomponents%2Fpolicies%2Fmapping&amp;policyName=policy_641475696923109&amp;policyRelativePath=gov%2Fcomponents%2Ftitle%2Fpolicy_641475696923109&amp;resourceType=wcm%2Fcore%2Fcomponents%2Fpolicy%2Fpolicy&quot;,&quot;designDialogClassic&quot;:&quot;/apps/core/wcm/components/title/v2/title/cq:design_dialog&quot;,&quot;hasPolicyMapping&quot;:true,&quot;type&quot;:&quot;gov/components/title&quot;,&quot;isResponsiveGrid&quot;:false,&quot;policyPath&quot;:&quot;root/container/title&quot;,&quot;csp&quot;:&quot;page|basicpage/root|container|responsivegrid/container|responsivegrid/title&quot;,&quot;editConfig&quot;:{&quot;inplaceEditingConfig&quot;:{&quot;active&quot;:true,&quot;editorType&quot;:&quot;title&quot;,&quot;configPath&quot;:&quot;/apps/core/wcm/components/title/v2/title/cq:editConfig/cq:inplaceEditing/inplaceEditingConfig&quot;},&quot;structure&quot;:true},&quot;ipeConfig&quot;:{&quot;jcr:primaryType&quot;:&quot;nt:unstructured&quot;,&quot;titleTag&quot;:[&quot;h1&quot;,&quot;h2&quot;,&quot;h3&quot;,&quot;h4&quot;,&quot;h5&quot;,&quot;h6&quot;],&quot;inplaceEditingConfig&quot;:{&quot;jcr:primaryType&quot;:&quot;nt:unstructured&quot;,&quot;titleTag&quot;:[&quot;h1&quot;,&quot;h2&quot;,&quot;h3&quot;,&quot;h4&quot;,&quot;h5&quot;,&quot;h6&quot;]}}}"></cq>
+                        </div>
+                        <div class="container responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+                            <div id="container-9b9fa9cad3" class="cmp-container">
+
+
+
+                                <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+
+                                    <div class="flag aem-GridColumn aem-GridColumn--default--12"><div class="flag_container div">
+                                        <div id="clickable" class="flag_green"></div>
+                                        <div class="flag_white"></div>
+                                        <div class="flag_red"></div>
+                                    </div>
+                                        <!--cq{"decorated":true,"type":"gov/components/flag","path":"/content/gov/it/il-governo/jcr:content/root/container/container/flag_1589585203","selectors":null,"servlet":"Script /apps/gov/components/flag/flag.html","totalTime":1,"selfTime":1}-->
+                                        <cq data-path="/content/gov/it/il-governo/jcr:content/root/container/container/flag_1589585203" data-config="{&quot;path&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/container/flag_1589585203&quot;,&quot;slingPath&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/container/flag_1589585203.html&quot;,&quot;dialog&quot;:&quot;/apps/gov/components/flag/cq:dialog&quot;,&quot;dialogLoadingMode&quot;:&quot;auto&quot;,&quot;dialogLayout&quot;:&quot;auto&quot;,&quot;dialogSrc&quot;:&quot;/mnt/override/apps/gov/components/flag/_cq_dialog.html/content/gov/it/il-governo/jcr:content/root/container/container/flag_1589585203&quot;,&quot;type&quot;:&quot;gov/components/flag&quot;,&quot;isResponsiveGrid&quot;:false,&quot;policyPath&quot;:&quot;root/container/container/gov/components/flag&quot;,&quot;csp&quot;:&quot;page|basicpage/root|container|responsivegrid/container|responsivegrid/container|responsivegrid/flag&quot;}"></cq>
+                                    </div>
+                                    <div class="post aem-GridColumn aem-GridColumn--default--12"><h1>Posts</h1>
+
+                                        <ul id="posts">
+
+                                        </ul>
+                                    </div>
+
+
+
+                                    <script type="text/javascript" src="/etc.clientlibs/gov/components/post/clientlib-post.js"></script>
+
+
+
+
+
+
+
+                                    <link rel="stylesheet" href="/etc.clientlibs/gov/components/post/clientlib-post.css" type="text/css">
+
+
+
+                                    <!--cq{"decorated":true,"type":"gov/components/post","path":"/content/gov/it/il-governo/jcr:content/root/container/container/post","selectors":null,"servlet":"Script /apps/gov/components/post/post.html","totalTime":3,"selfTime":3}-->
+                                    <cq data-path="/content/gov/it/il-governo/jcr:content/root/container/container/post" data-config="{&quot;path&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/container/post&quot;,&quot;slingPath&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/container/post.html&quot;,&quot;dialog&quot;:&quot;/apps/gov/components/post/cq:dialog&quot;,&quot;dialogLoadingMode&quot;:&quot;auto&quot;,&quot;dialogLayout&quot;:&quot;auto&quot;,&quot;dialogSrc&quot;:&quot;/mnt/override/apps/gov/components/post/_cq_dialog.html/content/gov/it/il-governo/jcr:content/root/container/container/post&quot;,&quot;type&quot;:&quot;gov/components/post&quot;,&quot;isResponsiveGrid&quot;:false,&quot;policyPath&quot;:&quot;root/container/container/gov/components/post&quot;,&quot;csp&quot;:&quot;page|basicpage/root|container|responsivegrid/container|responsivegrid/container|responsivegrid/post&quot;}"></cq>
+                                </div>
+                                <div class="flag aem-GridColumn aem-GridColumn--default--12"><div class="flag_container div">
+                                    <div id="clickable" class="flag_green"></div>
+                                    <div class="flag_white"></div>
+                                    <div class="flag_red"></div>
+                                </div>
+                                    <!--cq{"decorated":true,"type":"gov/components/flag","path":"/content/gov/it/il-governo/jcr:content/root/container/container/flag","selectors":null,"servlet":"Script /apps/gov/components/flag/flag.html","totalTime":0,"selfTime":0}-->
+                                    <cq data-path="/content/gov/it/il-governo/jcr:content/root/container/container/flag" data-config="{&quot;path&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/container/flag&quot;,&quot;slingPath&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/container/flag.html&quot;,&quot;dialog&quot;:&quot;/apps/gov/components/flag/cq:dialog&quot;,&quot;dialogLoadingMode&quot;:&quot;auto&quot;,&quot;dialogLayout&quot;:&quot;auto&quot;,&quot;dialogSrc&quot;:&quot;/mnt/override/apps/gov/components/flag/_cq_dialog.html/content/gov/it/il-governo/jcr:content/root/container/container/flag&quot;,&quot;type&quot;:&quot;gov/components/flag&quot;,&quot;isResponsiveGrid&quot;:false,&quot;policyPath&quot;:&quot;root/container/container/gov/components/flag&quot;,&quot;csp&quot;:&quot;page|basicpage/root|container|responsivegrid/container|responsivegrid/container|responsivegrid/flag&quot;}"></cq>
+                                </div>
+
+                                <div class="new newpar section aem-Grid-newComponent">
+
+                                    <!--cq{"decorated":true,"type":"wcm/foundation/components/responsivegrid/new","path":"/content/gov/it/il-governo/jcr:content/root/container/container/*","selectors":null,"servlet":"Script /libs/wcm/foundation/components/parsys/newpar/newpar.html","totalTime":2,"selfTime":2}-->
+                                    <cq data-path="/content/gov/it/il-governo/jcr:content/root/container/container/*" data-config="{&quot;path&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/container/*&quot;,&quot;slingPath&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/container/*.html&quot;,&quot;type&quot;:&quot;wcm/foundation/components/responsivegrid/new&quot;,&quot;isResponsiveGrid&quot;:false,&quot;csp&quot;:&quot;page|basicpage/root|container|responsivegrid/container|responsivegrid/container|responsivegrid/new|newpar&quot;,&quot;editConfig&quot;:{&quot;actions&quot;:[null,&quot;CQ.wcm.EditBase.INSERT&quot;],&quot;disableTargeting&quot;:true}}"></cq>
+                                </div>
+
+                            </div>
+                            <!--cq{"decorated":true,"type":"wcm/foundation/components/responsivegrid","path":"/content/gov/it/il-governo/jcr:content/root/container/container/no_resource_0","selectors":null,"servlet":"Script /libs/wcm/foundation/components/responsivegrid/responsivegrid.html","totalTime":25,"selfTime":19}-->
+
+                        </div>
+
+
+                        <!--cq{"decorated":true,"type":"gov/components/container","path":"/content/gov/it/il-governo/jcr:content/root/container/container","selectors":null,"servlet":"Script /apps/core/wcm/components/container/v1/container/container.html","totalTime":26,"selfTime":1}-->
+                        <cq data-path="/content/gov/it/il-governo/jcr:content/root/container/container" data-config="{&quot;path&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/container&quot;,&quot;slingPath&quot;:&quot;/content/gov/it/il-governo/jcr:content/root/container/container.html&quot;,&quot;dialog&quot;:&quot;/apps/core/wcm/components/container/v1/container/cq:dialog&quot;,&quot;dialogLoadingMode&quot;:&quot;auto&quot;,&quot;dialogLayout&quot;:&quot;auto&quot;,&quot;dialogSrc&quot;:&quot;/mnt/override/apps/core/wcm/components/container/v1/container/_cq_dialog.html/content/gov/it/il-governo/jcr:content/root/container/container&quot;,&quot;designDialog&quot;:&quot;/apps/core/wcm/components/container/v1/container/cq:design_dialog&quot;,&quot;designDialogLayout&quot;:&quot;fullscreen&quot;,&quot;designDialogLoadingMode&quot;:&quot;auto&quot;,&quot;designDialogSrc&quot;:&quot;/mnt/override/apps/core/wcm/components/container/v1/container/_cq_design_dialog.policydesign.editabletemplate.html/conf/gov/settings/wcm/policies/gov/components/container/policy_1574695586800?dialog=%2Fapps%2Fcore%2Fwcm%2Fcomponents%2Fcontainer%2Fv1%2Fcontainer%2Fcq%3Adesign_dialog&amp;referrer=%2Fcontent%2Fgov%2Fit%2Fil-governo&amp;policyContentPath=%2Fcontent%2Fgov%2Fit%2Fil-governo%2Fjcr%3Acontent%2Froot%2Fcontainer%2Fcontainer&amp;policyContentResourceType=gov%2Fcomponents%2Fcontainer&amp;policyDirectoryPath=%2Fconf%2Fgov%2Fsettings%2Fwcm%2Fpolicies%2Fgov%2Fcomponents%2Fcontainer%2F&amp;policyMappingPath=%2Fconf%2Fgov%2Fsettings%2Fwcm%2Ftemplates%2Fpage-content%2Fpolicies%2Fjcr%3Acontent%2Froot%2Fcontainer%2Fcontainer&amp;policyMappingResourceType=wcm%2Fcore%2Fcomponents%2Fpolicies%2Fmapping&amp;policyName=policy_1574695586800&amp;policyRelativePath=gov%2Fcomponents%2Fcontainer%2Fpolicy_1574695586800&amp;resourceType=wcm%2Fcore%2Fcomponents%2Fpolicy%2Fpolicy&quot;,&quot;designDialogClassic&quot;:&quot;/apps/core/wcm/components/container/v1/container/cq:design_dialog&quot;,&quot;hasPolicyMapping&quot;:true,&quot;type&quot;:&quot;gov/components/container&quot;,&quot;isResponsiveGrid&quot;:true,&quot;policyPath&quot;:&quot;root/container/container&quot;,&quot;csp&quot;:&quot;page|basicpage/root|container|responsivegrid/container|responsivegrid/container|responsivegrid&quot;,&quot;isContainer&quot;:true,&quot;editConfig&quot;:{&quot;listeners&quot;:{&quot;afterchildinsert&quot;:&quot;function(editable){Granite.author.responsive.EditableActions.REFRESH.execute(editable)}&quot;},&quot;structure&quot;:true},&quot;ipeConfig&quot;:{&quot;jcr:primaryType&quot;:&quot;nt:unstructured&quot;,&quot;jcr:title&quot;:&quot;Page Content&quot;,&quot;jcr:lastModifiedBy&quot;:&quot;admin&quot;,&quot;layout&quot;:&quot;responsiveGrid&quot;,&quot;layoutDisabled&quot;:&quot;false&quot;,&quot;components&quot;:[&quot;group:GOV Sites Project - Content&quot;,&quot;/apps/gov/components/form/container&quot;],&quot;jcr:description&quot;:&quot;Allows the page components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor).&quot;,&quot;jcr:lastModified&quot;:&quot;java.util.GregorianCalendar[time=1646040577153,areFieldsSet=true,areAllFieldsSet=true,lenient=false,zone=sun.util.calendar.ZoneInfo[id=\&quot;GMT+01:00\&quot;,offset=3600000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null],firstDayOfWeek=2,minimalDaysInFirstWeek=4,ERA=1,YEAR=2022,MONTH=1,WEEK_OF_YEAR=9,WEEK_OF_MONTH=5,DAY_OF_MONTH=28,DAY_OF_YEAR=59,DAY_OF_WEEK=2,DAY_OF_WEEK_IN_MONTH=4,AM_PM=0,HOUR=10,HOUR_OF_DAY=10,MINUTE=29,SECOND=37,MILLISECOND=153,ZONE_OFFSET=3600000,DST_OFFSET=0]&quot;,&quot;sling:resourceType&quot;:&quot;wcm/core/components/policy/policy&quot;,&quot;jcr:content&quot;:{&quot;jcr:primaryType&quot;:&quot;nt:unstructured&quot;},&quot;cq:authoring&quot;:{&quot;jcr:primaryType&quot;:&quot;nt:unstructured&quot;,&quot;assetToComponentMapping&quot;:{&quot;jcr:primaryType&quot;:&quot;nt:unstructured&quot;,&quot;mapping_1575030255082&quot;:{&quot;jcr:primaryType&quot;:&quot;nt:unstructured&quot;,&quot;resourceType&quot;:&quot;gov/components/image&quot;,&quot;assetMimetype&quot;:&quot;image/*&quot;,&quot;droptarget&quot;:&quot;image&quot;,&quot;assetGroup&quot;:&quot;media&quot;},&quot;mapping_1575030260142&quot;:{&quot;jcr:primaryType&quot;:&quot;nt:unstructured&quot;,&quot;resourceType&quot;:&quot;gov/components/experiencefragment&quot;,&quot;assetMimetype&quot;:&quot;text/html&quot;,&quot;droptarget&quot;:&quot;experiencefragment&quot;,&quot;assetGroup&quot;:&quot;content&quot;},&quot;mapping_1575030269139&quot;:{&quot;jcr:primaryType&quot;:&quot;nt:unstructured&quot;,&quot;resourceType&quot;:&quot;gov/components/contentfragment&quot;,&quot;assetMimetype&quot;:[&quot;text/html&quot;,&quot;application/vnd.adobe.contentfragment&quot;],&quot;droptarget&quot;:&quot;contentfragment&quot;,&quot;assetGroup&quot;:&quot;media&quot;}}}}}"></cq>
+                    </div>
+
+                    <div class="new newpar section aem-Grid-newComponent">
+
+                        <!--cq{"decorated":true,"type":"wcm/foundation/components/responsivegrid/new","path":"/content/gov/it/il-governo/jcr:content/root/container/*","structurePath":"/conf/gov/settings/wcm/templates/page-content/structure/jcr:content/root/container/*","selectors":null,"servlet":"Script /libs/wcm/foundation/components/parsys/newpar/newpar.html","totalTime":1,"selfTime":1}-->
+                    </div>
+
+                </div>
+                <!--cq{"decorated":true,"type":"wcm/foundation/components/responsivegrid","path":"/content/gov/it/il-governo/jcr:content/root/container/no_resource_0","structurePath":"/conf/gov/settings/wcm/templates/page-content/structure/jcr:content/root/container/no_resource_0","selectors":null,"servlet":"Script /libs/wcm/foundation/components/responsivegrid/responsivegrid.html","totalTime":66,"selfTime":36}-->
+
+        </div>
+
+
+        <!--cq{"decorated":true,"type":"gov/components/container","path":"/content/gov/it/il-governo/jcr:content/root/container","structurePath":"/conf/gov/settings/wcm/templates/page-content/structure/jcr:content/root/container","selectors":null,"servlet":"Script /apps/core/wcm/components/container/v1/container/container.html","totalTime":68,"selfTime":2}-->
+        </main>
+        <footer class="experiencefragment aem-GridColumn aem-GridColumn--default--12">
+            <div id="experiencefragment-2080f5140b" class="cmp-experiencefragment cmp-experiencefragment--footer">
+
+
+
+                <div id="container-d1691c88be" class="cmp-container">
+
+
+
+                    <div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+
+                        <div class="image aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--1">
+                            <div data-cmp-is="image" data-cmp-lazythreshold="0" data-cmp-src="/content/experience-fragments/gov/us/en/site/footer/master/_jcr_content/root/image.coreimg{.width}.svg/1650468043487/logo-gov.svg" data-asset="/content/dam/gov/logo_gov.svg" data-asset-id="a4e46a7a-444c-4169-921f-7dff683ad03b" data-title="Logo" id="image-5d5fcb886c" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+                                <a class="cmp-image__link" href="https://www.governo.it/" data-cmp-hook-image="link">
+
+
+                                    <img src="/content/experience-fragments/gov/us/en/site/footer/master/_jcr_content/root/image.coreimg.svg/1650468043487/logo-gov.svg" class="cmp-image__image" itemprop="contentUrl" data-cmp-hook-image="image" alt="Logo"/>
+
+
+                                </a>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="title aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--8 aem-GridColumn--offset--default--0">
+                            <div id="title-ad78796469" class="cmp-title">
+                                <h1 class="cmp-title__text">Governo Italiano                                                                        Presidenza del Consiglio dei Ministri</h1>
+                            </div>
+
+
+
+                        </div>
+                        <div class="title aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--12 aem-GridColumn--offset--default--0">
+                            <div id="title-515a70afc8" class="cmp-title">
+                                <h3 class="cmp-title__text">Contatti</h3>
+                            </div>
+
+
+
+                        </div>
+                        <div class="separator aem-GridColumn aem-GridColumn--default--12">
+                            <div id="separator-5f4a08c6d4" class="cmp-separator">
+                                <hr class="cmp-separator__horizontal-rule"/>
+                            </div></div>
+                        <div class="container responsivegrid aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+
+
+
+                            <div id="container-cbaae1185c" class="cmp-container">
+
+                                <div class="title">
+                                    <div id="title-c784491402" class="cmp-title">
+                                        <h4 class="cmp-title__text">Presidenza del Consiglio dei Ministri</h4>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="text">
+                                    <div id="text-8785f9a98b" class="cmp-text">
+                                        <p>Palazzo Chigi<br />
+                                            Piazza Colonna 370<br />
+                                            00187 Roma - Italia</p>
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="container responsivegrid aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+
+
+
+                            <div id="container-14efd36d52" class="cmp-container">
+
+                                <div class="title">
+                                    <div id="title-f76700c14a" class="cmp-title">
+                                        <h4 class="cmp-title__text">Corrispondenza cartacea</h4>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="text">
+                                    <div id="text-45eee88a57" class="cmp-text">
+                                        <p>Via dell'Impresa 89<br />
+                                            00186 Roma - Italia</p>
+                                        <p><b>E' opportuno indicare chiaramente sull'involucro la Struttura destinataria</b></p>
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="container responsivegrid aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+
+
+
+                            <div id="container-b30ac290d1" class="cmp-container">
+
+                                <div class="title">
+                                    <div id="title-37c87f017e" class="cmp-title">
+                                        <h4 class="cmp-title__text">Indirizzi di posta elettronica</h4>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="text">
+                                    <div id="text-f504e7e481" class="cmp-text">
+                                        <p><a href="http://presidenza.governo.it/AmministrazioneTrasparente/Organizzazione/TelefonoPostaElettronica/PEC.html">Elenco PEC</a></p>
+                                        <p><a href="http://presidenza.governo.it/AmministrazioneTrasparente/Organizzazione/TelefonoPostaElettronica/email.html">Elenco e-Mail</a></p>
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="container responsivegrid aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+
+
+
+                            <div id="container-65f2287ec4" class="cmp-container">
+
+                                <div class="title">
+                                    <div id="title-fcc636d57e" class="cmp-title">
+                                        <h4 class="cmp-title__text">Recapiti telefonici</h4>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="text">
+                                    <div id="text-c2b16b3f68" class="cmp-text">
+                                        <p>Centralino: (+39) 06.6779.1</p>
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="list aem-GridColumn aem-GridColumn--default--12">
+                            <ul id="list-ec9cebc067" class="cmp-list">
+                                <li class="cmp-list__item" data-cmp-data-layer="{&#34;list-ec9cebc067-item-879842c40f&#34;:{&#34;@type&#34;:&#34;gov/components/list/item&#34;,&#34;repo:modifyDate&#34;:&#34;2022-04-20T15:19:55Z&#34;,&#34;dc:title&#34;:&#34;GOV Sites Project&#34;,&#34;xdm:linkURL&#34;:&#34;/content/gov/us/en.html&#34;}}">
+                                    <article>
+                                        <a class="cmp-list__item-link" href="/content/gov/us/en.html" data-cmp-clickable>
+                                            <span class="cmp-list__item-title">GOV Sites Project</span>
+
+                                        </a>
+
+                                    </article>
+                                </li>
+
+                                <li class="cmp-list__item" data-cmp-data-layer="{&#34;list-ec9cebc067-item-baedcac857&#34;:{&#34;@type&#34;:&#34;gov/components/list/item&#34;,&#34;repo:modifyDate&#34;:&#34;2022-04-20T15:19:55Z&#34;,&#34;dc:title&#34;:&#34;Italy&#34;,&#34;xdm:linkURL&#34;:&#34;/content/gov/it.html&#34;}}">
+                                    <article>
+                                        <a class="cmp-list__item-link" href="/content/gov/it.html" data-cmp-clickable>
+                                            <span class="cmp-list__item-title">Italy</span>
+
+                                        </a>
+
+                                    </article>
+                                </li>
+
+                                <li class="cmp-list__item" data-cmp-data-layer="{&#34;list-ec9cebc067-item-03c6a6457a&#34;:{&#34;@type&#34;:&#34;gov/components/list/item&#34;,&#34;repo:modifyDate&#34;:&#34;2022-04-20T15:19:55Z&#34;,&#34;dc:title&#34;:&#34;GOV Sites Project&#34;,&#34;xdm:linkURL&#34;:&#34;/content/gov/us/en.html&#34;}}">
+                                    <article>
+                                        <a class="cmp-list__item-link" href="/content/gov/us/en.html" data-cmp-clickable>
+                                            <span class="cmp-list__item-title">GOV Sites Project</span>
+
+                                        </a>
+
+                                    </article>
+                                </li>
+                            </ul>
+
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!--cq{"decorated":true,"type":"gov/components/experiencefragment","path":"/content/gov/it/il-governo/jcr:content/root/experiencefragment-footer","structurePath":"/conf/gov/settings/wcm/templates/page-content/structure/jcr:content/root/experiencefragment-footer","selectors":null,"servlet":"Script /apps/core/wcm/components/experiencefragment/v1/experiencefragment/experiencefragment.html","totalTime":126,"selfTime":126}-->
+        </footer>
+
+        <div class="new newpar section aem-Grid-newComponent">
+
+            <!--cq{"decorated":true,"type":"wcm/foundation/components/responsivegrid/new","path":"/content/gov/it/il-governo/jcr:content/root/*","structurePath":"/conf/gov/settings/wcm/templates/page-content/structure/jcr:content/root/*","selectors":null,"servlet":"Script /libs/wcm/foundation/components/parsys/newpar/newpar.html","totalTime":3,"selfTime":3}-->
+        </div>
+
+    </div>
+    <!--cq{"decorated":true,"type":"wcm/foundation/components/responsivegrid","path":"/content/gov/it/il-governo/jcr:content/root/no_resource_0","structurePath":"/conf/gov/settings/wcm/templates/page-content/structure/jcr:content/root/no_resource_0","selectors":null,"servlet":"Script /libs/wcm/foundation/components/responsivegrid/responsivegrid.html","totalTime":240,"selfTime":11}-->
+
+</div>
+
+
+<!--cq{"decorated":true,"type":"gov/components/container","path":"/content/gov/it/il-governo/jcr:content/root","structurePath":"/conf/gov/settings/wcm/templates/page-content/structure/jcr:content/root","selectors":null,"servlet":"Script /apps/core/wcm/components/container/v1/container/container.html","totalTime":241,"selfTime":1}-->
+</div>
+
+
+
+
+
+<script type="text/javascript" src="/etc.clientlibs/gov/clientlibs/clientlib-site.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/etc.clientlibs/core/wcm/components/commons/site/clientlibs/container.js"></script>
+<script type="text/javascript" src="/etc.clientlibs/gov/clientlibs/clientlib-base.js"></script>
+
+
+
+
+
+
+
+<!--cq{"decorated":true,"type":"cq/cloudserviceconfigs/components/servicecomponents","path":"/content/gov/it/il-governo/jcr:content/cloudservices","selectors":null,"servlet":"Script /libs/cq/cloudserviceconfigs/components/servicecomponents/servicecomponents.jsp","totalTime":1,"selfTime":1}-->
+
+
+<!--cq{"decorated":false,"type":"cq/cloudconfig/components/scripttags/footer","path":"/content/gov/it/il-governo/jcr:content/cloudconfig-footer","structurePath":"/content/gov/it/il-governo/jcr:content/cloudconfig-footer","selectors":null,"servlet":"Script /libs/cq/cloudconfig/components/scripttags/footer/footer.html","totalTime":4,"selfTime":4}-->
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+<!--cq{"decorated":false,"type":"gov/components/page","path":"/content/gov/it/il-governo/jcr:content","selectors":null,"servlet":"Script /apps/core/wcm/components/page/v2/page/page.html","totalTime":308,"selfTime":55}-->

@@ -1,0 +1,31 @@
+
+//== XF Header style, used on page template
+
+header.experiencefragment {
+    a {
+        color: #FFFFFF;
+        text-decoration: none;
+
+        @media (prefers-color-scheme: dark) {
+            color: $color-foreground-dark;
+        }
+
+        &:hover,
+        &:focus {
+            color: $color-link;
+            text-decoration:none;
+
+            @media (prefers-color-scheme: dark) {
+                color: $color-link-dark;
+            }
+        }
+    }
+
+
+    //== Grid layout
+    .cmp-container {
+        padding-top: 55px;
+        display: grid;
+        background-color: #1276dc;
+    }
+}
