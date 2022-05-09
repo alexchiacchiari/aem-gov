@@ -2,7 +2,7 @@
 //== XF Header style, used on page template
 
 header.experiencefragment {
-    a {
+    .cmp-list__item-link {
         color: #FFFFFF;
         text-decoration: none;
 
@@ -28,4 +28,33 @@ header.experiencefragment {
         display: grid;
         background-color: #1276dc;
     }
+}
+
+#xf-header {
+       
+    font-family: 'Titillium Web', sans-serif;
+    
+    padding-top: 55px;
+    display: grid;
+    background-color: #1276dc;
+    
+    .cmp-list__item-link {
+        color: #FFFFFF;
+        text-decoration: none;
+        
+        @media (prefers-color-scheme: dark) {
+            color: $color-foreground-dark;
+        }
+        
+        &:hover,
+        &:focus {
+            color: $color-link;
+            text-decoration:none;
+            
+            @media (prefers-color-scheme: dark) {
+                color: $color-link-dark;
+            }
+        }
+    }
+
 }

@@ -2,6 +2,7 @@
 //== XF Footer style, used on page template
 
 footer.experiencefragment {
+    
     padding: .5em 1em;
     border-top: 1px solid $color-foreground;
     background: #30373d;
@@ -32,4 +33,38 @@ footer.experiencefragment {
     .cmp-image__image {
         margin-bottom: 50px;
     }
+}
+
+#xf-footer {
+    font-family: 'Titillium Web', sans-serif;
+    padding: 0.5em 1em;
+    border-top: 1px solid #202020;
+    background: #30373d;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    @media (prefers-color-scheme: dark) {
+        border-color: $color-foreground-dark;
+    }
+
+    .cmp-separator {
+        margin: 0;
+        border: 0;
+        color: #b0a6a5;
+    }
+
+    .cmp-container {
+        padding-left: 30px;
+    }
+
+    .cmp-text {
+        color: #a5abb0;
+    }
+
+    .cmp-image__image {
+        margin-bottom: 50px;
+    }
+
 }
