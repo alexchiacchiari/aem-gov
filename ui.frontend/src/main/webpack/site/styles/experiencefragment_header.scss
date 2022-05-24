@@ -2,6 +2,7 @@
 //== XF Header style, used on page template
 
 header.experiencefragment {
+
     .cmp-list__item-link {
         color: #FFFFFF;
         text-decoration: none;
@@ -28,6 +29,11 @@ header.experiencefragment {
         display: grid;
         background-color: #1276dc;
     }
+
+    #search-container {
+        padding-top: 0;
+    }
+    
 }
 
 #xf-header {

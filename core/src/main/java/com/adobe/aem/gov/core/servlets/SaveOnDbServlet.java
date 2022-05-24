@@ -2,17 +2,13 @@
 package com.adobe.aem.gov.core.servlets;
 
 
-import com.adobe.aem.gov.core.models.CurrentPageModel;
 import com.day.cq.wcm.api.Page;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
-import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
-import org.apache.sling.resourceresolver.impl.helper.ResourceIteratorDecorator;
-import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.eclipse.jetty.io.EofException;
 import org.jetbrains.annotations.NotNull;
 import org.osgi.service.component.annotations.Component;
@@ -24,7 +20,6 @@ import javax.jcr.*;
 import javax.servlet.Servlet;
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -70,9 +65,7 @@ public class SaveOnDbServlet extends SlingAllMethodsServlet {
     @SlingObject
     private Page currentPage;
 
-/**
- * 2) TODO: Gestire la lista vuota
- * */
+
     @Override
     protected void doPost(final @NotNull SlingHttpServletRequest req,
                           final @NotNull SlingHttpServletResponse resp) throws IOException {

@@ -15,11 +15,8 @@
  */
 package com.adobe.aem.gov.core.models;
 
-import java.sql.*;
-import static org.apache.sling.api.resource.ResourceResolver.PROPERTY_RESOURCE_TYPE;
-
-import javax.annotation.PostConstruct;
-
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Default;
@@ -30,14 +27,13 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.settings.SlingSettingsService;
 
-
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
-
+import javax.annotation.PostConstruct;
 import java.util.Optional;
 
+import static org.apache.sling.api.resource.ResourceResolver.PROPERTY_RESOURCE_TYPE;
+
 @Model(adaptables = Resource.class)
-public class HelloWorldModel {
+public class HelloWorldModel{
 
     @ValueMapValue(name=PROPERTY_RESOURCE_TYPE, injectionStrategy=InjectionStrategy.OPTIONAL)
     @Default(values="No resourceType")
