@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2022-03-01T16:15:17.049+01:00"
+        cq:lastModifiedBy="admin"
+        cq:tags="[]"
+        cq:template="/conf/gov/settings/wcm/templates/xf-web-variation"
+        cq:xfMasterVariation="{Boolean}true"
+        cq:xfVariantType="web"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Footer"
+        sling:resourceType="gov/components/xfpage">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="gov/components/container"
+            layout="responsiveGrid">
+            <image
+                jcr:created="{Date}2022-02-25T15:02:36.935+01:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-02-25T15:35:23.210+01:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="gov/components/image"
+                alt="Logo"
+                altValueFromDAM="false"
+                displayPopupTitle="false"
+                fileReference="/content/dam/gov/logo_gov.svg"
+                isDecorative="false"
+                linkURL="https://www.governo.it/"
+                titleValueFromDAM="false">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="1"/>
+                </cq:responsive>
+            </image>
+            <title
+                jcr:created="{Date}2022-02-25T15:03:16.380+01:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-03-01T16:15:16.971+01:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Governo Italiano                                                                        Presidenza del Consiglio dei Ministri"
+                sling:resourceType="gov/components/title"
+                type="h1">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="8"/>
+                </cq:responsive>
+            </title>
+            <title_632186668
+                jcr:created="{Date}2022-02-25T15:05:33.684+01:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-02-25T15:07:08.108+01:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Contatti"
+                sling:resourceType="gov/components/title"
+                type="h3">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="12"/>
+                </cq:responsive>
+            </title_632186668>
+            <separator
+                jcr:created="{Date}2022-02-25T15:07:57.147+01:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-02-25T15:07:57.147+01:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="gov/components/separator"/>
+            <container
+                jcr:created="{Date}2022-03-01T15:37:13.523+01:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-03-01T15:37:13.523+01:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="gov/components/container">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="3"/>
+                </cq:responsive>
+                <title_1135636830
+                    jcr:created="{Date}2022-02-25T15:09:23.373+01:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2022-03-01T15:43:27.641+01:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Presidenza del Consiglio dei Ministri"
+                    sling:resourceType="gov/components/title"
+                    type="h4">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="12"/>
+                    </cq:responsive>
+                </title_1135636830>
+                <text
+                    jcr:created="{Date}2022-02-25T15:12:17.547+01:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2022-02-25T15:12:29.993+01:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="gov/components/text"
+                    text="&lt;p>Palazzo Chigi&lt;br>&#xd;&#xa;Piazza Colonna 370&lt;br>&#xd;&#xa;00187 Roma - Italia&lt;/p>&#xd;&#xa;"
+                    textIsRich="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="12"/>
+                    </cq:responsive>
+                </text>
+            </container>
+            <container_710728256
+                jcr:created="{Date}2022-03-01T15:37:59.557+01:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-03-01T15:37:59.557+01:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="gov/components/container">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="3"/>
+                </cq:responsive>
+                <title_593962066
+                    jcr:created="{Date}2022-02-25T15:09:46.131+01:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2022-02-25T15:23:50.565+01:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Corrispondenza cartacea"
+                    sling:resourceType="gov/components/title"
+                    type="h4">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="12"/>
+                    </cq:responsive>
+                </title_593962066>
+                <text_254325062
+                    jcr:created="{Date}2022-02-25T15:12:46.627+01:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2022-02-25T15:13:00.471+01:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="gov/components/text"
+                    text="&lt;p>Via dell'Impresa 89&lt;br>&#xd;&#xa;00186 Roma - Italia&lt;/p>&#xd;&#xa;&lt;p>&lt;b>E' opportuno indicare chiaramente sull'involucro la Struttura destinataria&lt;/b>&lt;/p>&#xd;&#xa;"
+                    textIsRich="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="12"/>
+                    </cq:responsive>
+                </text_254325062>
+            </container_710728256>
+            <container_238240564
+                jcr:created="{Date}2022-03-01T15:38:44.508+01:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-03-01T15:38:44.508+01:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="gov/components/container">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="3"/>
+                </cq:responsive>
+                <title_897344858
+                    jcr:created="{Date}2022-02-25T15:09:52.713+01:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2022-02-25T15:24:03.764+01:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Indirizzi di posta elettronica"
+                    sling:resourceType="gov/components/title"
+                    type="h4">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="12"/>
+                    </cq:responsive>
+                </title_897344858>
+                <text_1444210366
+                    jcr:created="{Date}2022-02-25T15:14:02.282+01:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2022-02-25T15:14:21.016+01:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="gov/components/text"
+                    text="&lt;p>&lt;a href=&quot;http://presidenza.governo.it/AmministrazioneTrasparente/Organizzazione/TelefonoPostaElettronica/PEC.html&quot;>Elenco PEC&lt;/a>&lt;/p>&#xd;&#xa;&lt;p>&lt;a href=&quot;http://presidenza.governo.it/AmministrazioneTrasparente/Organizzazione/TelefonoPostaElettronica/email.html&quot;>Elenco e-Mail&lt;/a>&lt;/p>&#xd;&#xa;"
+                    textIsRich="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="12"/>
+                    </cq:responsive>
+                </text_1444210366>
+            </container_238240564>
+            <container_986726428
+                jcr:created="{Date}2022-03-01T15:39:18.585+01:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-03-01T15:39:18.585+01:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="gov/components/container">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="3"/>
+                </cq:responsive>
+                <title_1983736365
+                    jcr:created="{Date}2022-02-25T15:09:57.955+01:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2022-02-25T15:24:17.960+01:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Recapiti telefonici"
+                    sling:resourceType="gov/components/title"
+                    type="h4">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            behavior="none"
+                            offset="0"
+                            width="12"/>
+                    </cq:responsive>
+                </title_1983736365>
+                <text_1639498346
+                    jcr:created="{Date}2022-02-25T15:14:46.361+01:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2022-02-25T15:15:00.096+01:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="gov/components/text"
+                    text="&lt;p>Centralino: (+39) 06.6779.1&lt;/p>&#xd;&#xa;"
+                    textIsRich="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="12"/>
+                    </cq:responsive>
+                </text_1639498346>
+            </container_986726428>
+            <list
+                jcr:created="{Date}2022-02-25T15:28:46.266+01:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-02-25T15:29:33.384+01:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="gov/components/list"
+                childDepth="1"
+                linkItems="true"
+                listFrom="static"
+                pages="[/content/gov/us/en,/content/gov/it,/content/gov/us]"
+                showDescription="false"
+                showModificationDate="false"
+                sortOrder="asc"
+                tagsMatch="any"/>
+        </root>
+    </jcr:content>
+</jcr:root>

@@ -1,0 +1,24 @@
+.cmp-list__item-link {}
+.cmp-list__item-title {}
+.cmp-list__item-date {}
+.cmp-list {
+    display: block;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding: 22px 0 18px 0;
+}
+.cmp-list__item {
+    border: none;
+    list-style: none;
+    text-align: center;
+    display: inline-block;
+    margin: 0 0 0 0;
+    padding: 0 40px 0 40px;
+    font-size: 1.18em;
+    font-weight: 200;
+    line-height: 21px;
+    &:hover {
+        text-decoration: underline;
+    }
+}
