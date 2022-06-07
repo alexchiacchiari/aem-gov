@@ -101,3 +101,6 @@ reports/
 
 # Others
 dispatcher/src/conf.d/variables/default.vars
+
+# Visual Studio
+.vscode/
