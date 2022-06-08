@@ -77,9 +77,6 @@ buildNumber.properties
 .idea/
 *.iml
 
-# Visual Studio
-.vscode/
-
 ### Node.js ###
 
 # Log files
