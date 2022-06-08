@@ -77,6 +77,8 @@ buildNumber.properties
 .idea/
 *.iml
 
+# Visual Studio
+.vscode/
 
 ### Node.js ###
 
@@ -102,5 +104,3 @@ reports/
 # Others
 dispatcher/src/conf.d/variables/default.vars
 
-# Visual Studio
-.vscode/
