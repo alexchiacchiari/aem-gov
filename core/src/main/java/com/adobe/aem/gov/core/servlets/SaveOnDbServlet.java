@@ -2,7 +2,6 @@
 package com.adobe.aem.gov.core.servlets;
 
 
-import com.day.cq.wcm.api.Page;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
@@ -45,45 +44,39 @@ import java.util.Objects;
 public class SaveOnDbServlet extends SlingAllMethodsServlet {
 
     private static final long serialVersionUID = 1L;
-    private final Logger log = LoggerFactory.getLogger(getClass());
+    private final transient Logger log = LoggerFactory.getLogger(getClass());
 
     @Reference(target = "(&(objectclass=javax.sql.DataSource)(datasource.name=localhost))")
-    private DataSource dataSource;
+    private transient DataSource dataSource;
 
     @Reference
-    private Repository repository;
+    private transient Repository repository;
 
     @SlingObject
-    private Resource records;
+    private transient Resource records;
 
     @SlingObject
-    private ResourceResolver resourceResolver;
-
-    @SlingObject
-    private Node currentNode;
-
-    @SlingObject
-    private Page currentPage;
+    private transient ResourceResolver resourceResolver;
 
 
     @Override
     protected void doPost(final @NotNull SlingHttpServletRequest req,
                           final @NotNull SlingHttpServletResponse resp) throws IOException {
-        //setRespConfiguration(resp);
         String name = "";
         String message = "";
-        String query = "INSERT INTO yuridb.users (username, textfield, date) VALUES (?, ?, current_date)";
+        String dbTable = "yuridb.users";
+        String query = "INSERT INTO " + dbTable + "(username, textfield, date) VALUES (?, ?, current_date)";
 
-        try(Connection con = getConnection()) {
-
+        try (Connection con = getConnection()){
+            
             String saveOnDbNodePath = req.getParameter("path")
                     .replace("_jcr_content", "jcr:content");
 
             resourceResolver = req.getResourceResolver();
-            records = resourceResolver
-                    .getResource(saveOnDbNodePath)
-                    .getChild("records");
-            Objects.requireNonNull(records);
+            records = Objects.requireNonNull(
+                                    resourceResolver
+                                    .getResource(saveOnDbNodePath))
+                                    .getChild("records");
 
             Iterator<Resource> items = records.listChildren();
 
@@ -93,11 +86,11 @@ public class SaveOnDbServlet extends SlingAllMethodsServlet {
                 Resource res = items.next();
                 name = res.getValueMap().get("name").toString();
                 message = res.getValueMap().get("message").toString();
-
-                PreparedStatement preparedStmt = con.prepareStatement(query);
-                preparedStmt.setString(1, name);
-                preparedStmt.setString(2, message);
-                preparedStmt.execute();
+                try(PreparedStatement preparedStmt = con.prepareStatement(query);) {
+                    preparedStmt.setString(1, name);
+                    preparedStmt.setString(2, message);
+                    preparedStmt.execute();
+                }
                 resp.getWriter().
                         write("\nSuccessfully: \n"
                                 +
@@ -136,14 +129,11 @@ public class SaveOnDbServlet extends SlingAllMethodsServlet {
 
 
     public Connection getConnection() {
-        Connection con;
-        try {
-            con = dataSource.getConnection();
+        try (Connection con = dataSource.getConnection()){
             log.info("### got connection");
             return con;
         } catch(Exception e) {
-            log.error("### not able to get connection " + e.getMessage());
-
+            log.error("### not able to get connection {}", e.getMessage());
         }
         return null;
     }
