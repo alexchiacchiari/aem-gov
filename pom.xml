@@ -118,7 +118,7 @@
                         <nodeVersion>v16.14.0</nodeVersion>
                         <npmVersion>8.3.1</npmVersion>
                     </configuration>
-                    <!-- <executions>
+                    <executions>
                         <execution>
                             <id>install node and npm</id>
                             <goals>
@@ -131,7 +131,7 @@
                                 <goal>npm</goal>
                             </goals>
                         </execution>
-                    </executions>-->
+                    </executions>
                 </plugin>
                 <!-- Maven Jar Plugin -->
                 <plugin>
