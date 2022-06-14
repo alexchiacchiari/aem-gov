@@ -382,6 +382,11 @@ Bundle-DocURL:
                         </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>com.github.spotbugs</groupId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
+                    <version>4.5.0.0</version>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -690,6 +695,11 @@ Bundle-DocURL:
                 <artifactId>javax.annotation-api</artifactId>
                 <version>1.3.2</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs</artifactId>
+                <version>4.5.2</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.geronimo.specs</groupId>
