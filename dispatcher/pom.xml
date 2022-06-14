@@ -55,8 +55,10 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-enforcer-plugin</artifactId>
+                        <!--Commented because it's not needed this execution: I don't have a real dispatcher server -->
+<!--
                         <executions>
-                            <!-- enforce that immutable files are not touched: https://helpx.adobe.com/experience-manager/kb/ams-dispatcher-manual/immutable-files.html -->
+                            &lt;!&ndash; enforce that immutable files are not touched: https://helpx.adobe.com/experience-manager/kb/ams-dispatcher-manual/immutable-files.html &ndash;&gt;
                             <execution>
                                 <id>enforce-checksum-of-immutable-files</id>
                                 <goals>
@@ -64,7 +66,7 @@
                                 </goals>
                                 <configuration>
                                     <rules>
-                                        <!-- rules being inserted by archetype-pre-package.groovy -->
+                                        &lt;!&ndash; rules being inserted by archetype-pre-package.groovy &ndash;&gt;
                                         <requireFileChecksum>
                                             <file>src/conf/httpd.conf</file>
                                             <checksum>b6a3184f6c69b0a3334e455eeec12d45</checksum>
@@ -227,12 +229,14 @@
                                             <type>md5</type>
                                             <message>There have been changes detected in a file which is supposed to be immutable according to https://helpx.adobe.com/experience-manager/kb/ams-dispatcher-manual/immutable-files.html: src/conf.dispatcher.d/filters/ams_author_filters.any</message>
                                         </requireFileChecksum>
-                                        <!--<requireFileChecksum>
+
+                                        <requireFileChecksum>
                                             <file>src/conf.dispatcher.d/filters/ams_publish_filters.any</file>
                                             <checksum>e584f53f4a5dab6baaab6fdb111e124a</checksum>
                                             <type>md5</type>
                                             <message>There have been changes detected in a file which is supposed to be immutable according to https://helpx.adobe.com/experience-manager/kb/ams-dispatcher-manual/immutable-files.html: src/conf.dispatcher.d/filters/ams_publish_filters.any</message>
-                                        </requireFileChecksum>-->
+                                        </requireFileChecksum>
+
                                         <requireFileChecksum>
                                             <file>src/conf.dispatcher.d/filters/ams_lc_filters.any</file>
                                             <checksum>bd5b6c2a81e2af76a5420e0504d97575</checksum>
@@ -286,6 +290,7 @@
                                 </configuration>
                             </execution>
                         </executions>
+-->
                     </plugin>
                 </plugins>
             </build>
@@ -302,8 +307,9 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-enforcer-plugin</artifactId>
+<!--
                         <executions>
-                            <!-- enforce that immutable files are not touched: https://helpx.adobe.com/experience-manager/kb/ams-dispatcher-manual/immutable-files.html -->
+                            &lt;!&ndash; enforce that immutable files are not touched: https://helpx.adobe.com/experience-manager/kb/ams-dispatcher-manual/immutable-files.html &ndash;&gt;
                             <execution>
                                 <id>enforce-checksum-of-immutable-files</id>
                                 <goals>
@@ -311,7 +317,7 @@
                                 </goals>
                                 <configuration>
                                     <rules>
-                                        <!-- rules being inserted by archetype-pre-package.groovy -->
+                                        &lt;!&ndash; rules being inserted by archetype-pre-package.groovy &ndash;&gt;
                                         <requireFileChecksum>
                                             <file>src/conf/httpd.conf</file>
                                             <checksum>c48971b67c8b7f2ed8d551ed64cafe4c</checksum>
@@ -474,14 +480,14 @@
                                             <type>md5</type>
                                             <message>There have been changes detected in a file which is supposed to be immutable according to https://helpx.adobe.com/experience-manager/kb/ams-dispatcher-manual/immutable-files.html: src/conf.dispatcher.d/filters/ams_author_filters.any</message>
                                         </requireFileChecksum>
-<!--
+&lt;!&ndash;
                                         <requireFileChecksum>
                                             <file>src/conf.dispatcher.d/filters/ams_publish_filters.any</file>
                                             <checksum>d3c4346ffe93f25959bb2764c4762cc2</checksum>
                                             <type>md5</type>
                                             <message>There have been changes detected in a file which is supposed to be immutable according to https://helpx.adobe.com/experience-manager/kb/ams-dispatcher-manual/immutable-files.html: src/conf.dispatcher.d/filters/ams_publish_filters.any</message>
                                         </requireFileChecksum>
--->
+&ndash;&gt;
                                         <requireFileChecksum>
                                             <file>src/conf.dispatcher.d/filters/ams_lc_filters.any</file>
                                             <checksum>e8f5032a1ed8c1abd3b371c34e5c1921</checksum>
@@ -535,6 +541,7 @@
                                 </configuration>
                             </execution>
                         </executions>
+-->
                     </plugin>
                 </plugins>
             </build>
