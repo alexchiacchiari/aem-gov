@@ -42,7 +42,7 @@ jobs:
          distribution: 'adopt'
          cache: maven
      - name: PMD with Maven
-       run: mvn pmd:check
+       run: mvn pmd:pmd
        
   spotbugs:
   
