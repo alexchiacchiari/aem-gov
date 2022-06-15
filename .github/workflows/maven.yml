@@ -42,7 +42,7 @@ jobs:
          distribution: 'adopt'
          cache: maven
      - name: PMD with Maven
-       run: mvn pmd:check
+       run: mvn pmd:pmd
        
   spotbugs:
   
@@ -65,7 +65,7 @@ jobs:
        uses: jwgmeligmeyling/spotbugs-github-action@b8e2c3523acb34c87f14e18cbcd2d87db8c8584e
        with:
           name: SpotBugs Report JDK ${{ matrix.java }}
-          path: '**/build/reports/spotbugs/*.xml'
+          path: 'aem-gov/spotbugs/report/*.xml'
    
    
       
