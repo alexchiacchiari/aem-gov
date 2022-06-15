@@ -46,6 +46,8 @@ jobs:
        
   spotbugs:
   
+   permissions: write-all
+  
    runs-on: ubuntu-latest
    
    needs: build
