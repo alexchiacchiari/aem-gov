@@ -74,7 +74,6 @@
                 <version>3.0.1</version>
                 <inherited>true</inherited>
             </plugin>
-            <plugin>
             <!-- Maven Enforcer Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -388,8 +387,6 @@ Bundle-DocURL:
                     <artifactId>spotbugs-maven-plugin</artifactId>
                     <version>4.5.0.0</version>
                 </plugin>
-             <plugins>
-        </plugins>
             </plugins>
         </pluginManagement>
     </build>
